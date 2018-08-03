@@ -28,6 +28,11 @@ jobs:
       # run tests!
       - run: yarn lint
 
+      - run: yarn compile
+
+      - store_artifacts:
+          path: ./dist
+
   deploy:
     docker:
       - image: circleci/python:3.6
