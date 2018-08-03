@@ -1,0 +1,5 @@
+node_modules
+dist
+.env
+*-sam.yaml
+*.deploy.yaml
