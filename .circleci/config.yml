@@ -7,7 +7,7 @@ jobs:
   build:
     docker:
       - image: circleci/node:8.11.3
-    working_directory: ~/investa-static-landing-page
+    working_directory: ~/cloudformation-lambda
     steps:
       - checkout
 
@@ -31,7 +31,7 @@ jobs:
   deploy:
     docker:
       - image: circleci/python:3.6
-    working_directory: ~/investa-static-landing-page
+    working_directory: ~/cloudformation-lambda
     steps:
       - checkout
 
@@ -48,9 +48,15 @@ workflows:
   build-and-deploy:
     jobs:
       - build
-      - deploy:
+      - hold:
+          type: approval
           requires:
             - build
+          filters:
+            branches:
+              only: master
+      - deploy:
+          requires:
             - hold
           filters:
             branches:
