@@ -14,6 +14,6 @@ export const handler = (_event: APIGatewayEvent, _context: Context, callback: Pr
       'Content-Type': 'application/json',
     },
   };
-  logger.info('YOLO brother!');
+  logger.info('Yay!');
   callback(null, result);
 };
