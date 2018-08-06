@@ -7,7 +7,7 @@ export const handler = (_event: APIGatewayEvent, _context: Context, callback: Pr
   const result: APIGatewayProxyResult = {
     statusCode: 200,
     body: JSON.stringify({
-      message: 'YOLO!',
+      message: 'YOLO test!',
     }),
     headers: {
       'Access-Control-Allow-Origin': '*',
