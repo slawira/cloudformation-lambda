@@ -25,13 +25,14 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
 
-      # run tests!
       - run: yarn lint
 
-      - run: yarn compile
+      - run: yarn package
 
-      - store_artifacts:
-          path: .
+      - persist_to_workspace:
+          root: "./"
+          paths:
+            - dist.zip
 
   deploy:
     docker:
@@ -44,9 +45,16 @@ jobs:
           name: Install awscli
           command: sudo pip install awscli
 
+      - attach_workspace:
+          at: /tmp/workspace
+
       - run:
-          name: Deploy Cloudformation
-          command: yarn deploy
+          name: Copying the dist zip file
+          command: cp /tmp/workspace/dist.zip .
+
+      - run:
+          name: Deploy it!
+          command: ./bin/deploy.sh
 
 workflows:
   version: 2

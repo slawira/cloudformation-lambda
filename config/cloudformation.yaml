@@ -38,7 +38,7 @@ Resources:
   YoloLambda:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: ../dist
+      CodeUri: ../dist.zip
       Handler: index.handler
       Role: !GetAtt LambdaExecutionRole.Arn
       MemorySize: 256
