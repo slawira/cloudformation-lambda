@@ -33,14 +33,14 @@ jobs:
           root: "./"
           paths:
             - dist.zip
+            - bin/
+            - config/
 
   deploy:
     docker:
       - image: circleci/python:3.6
     working_directory: ~/cloudformation-lambda
     steps:
-      - checkout
-
       - run:
           name: Install awscli
           command: sudo pip install awscli
@@ -50,7 +50,7 @@ jobs:
 
       - run:
           name: Copying the dist zip file
-          command: cp /tmp/workspace/dist.zip .
+          command: cp -vr /tmp/workspace/* .
 
       - run:
           name: Deploy it!
