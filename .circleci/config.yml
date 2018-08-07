@@ -23,6 +23,8 @@ jobs:
 
       - run: yarn lint
 
+      - run: yarn test
+
       - run: yarn package
 
       - persist_to_workspace:
