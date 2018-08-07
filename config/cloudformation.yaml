@@ -42,4 +42,4 @@ Resources:
           Type: Api
           Properties:
             Path: /yolo
-            Method: any
+            Method: get
