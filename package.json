@@ -25,6 +25,7 @@
     "typescript": "^3.0.1"
   },
   "dependencies": {
+    "aws-sdk": "^2.287.0",
     "winston": "^3.0.0"
   }
 }

@@ -4,3 +4,4 @@ dist
 *-sam.yaml
 *.deploy.yaml
 dist.zip
+example.json
